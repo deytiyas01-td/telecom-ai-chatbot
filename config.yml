@@ -1,0 +1,17 @@
+recipe: default.v1
+language: en
+
+pipeline:
+  - name: WhitespaceTokenizer
+  - name: RegexFeaturizer
+  - name: SpacyNLP
+    model: "en_core_web_sm"
+  - name: SpacyEntityExtractor
+  - name: DIETClassifier
+    epochs: 100
+
+policies:
+  - name: RulePolicy
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 100
